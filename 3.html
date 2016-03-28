@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Una Sculptura</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/unasculptura/css/main.css">
+    <link href="css/full-slider.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- from now on -->
+    <!-- SIATE MISTERIOSI -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/3.0.10/pixi.min.js"></script>
+
+     <div class="container-fluid">
+       <div class="container"> 
+         <div class="row vertical-align">
+           <div class="col-xs-12 vcenter center-block">
+              <canvas id="test" class="absolute-center"></canvas>
+              <script>
+                renderer = PIXI.autoDetectRenderer(400, 400, {view: document.getElementById("test")});
+                document.body.appendChild(renderer.view);
+                renderer.backgroundColor = 0x111111;
+                var stage = new PIXI.Container();
+                var sprite1 = PIXI.Sprite.fromImage('/unasculptura/imagery/realear.jpg');
+                var sprite2 = PIXI.Sprite.fromImage('/unasculptura/imagery/realear.jpg');
+                sprite1.position.set(200, 200);
+                sprite1.anchor.set(0.5, 0.5);
+                sprite1.interactive = true;
+                sprite1.on('mousedown', onDown);
+                sprite1.on('touchstart', onDown);
+                stage.addChild(sprite1);
+                var i = 0.2;
+                function onDown() {
+                  setTimeout(function () {
+                    sprite1.scale.x += i;
+                    sprite1.scale.y += i;
+                    i += 0.01;
+                    if (i < 0.5) {
+                      onDown();
+                    }
+                    else {
+                      stage.addChild(sprite2);
+                      sprite2.position.set(200, 200);
+                      sprite2.anchor.set(0.5, 0.5); 
+                    }
+                  }, 50)
+                }
+
+                // start animating
+                animate();
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    // render the root container
+                    renderer.render(stage);
+                }
+              </script>
+           </div>
+         </div>
+       </div>
+     </div>
+  </body>
+</html>

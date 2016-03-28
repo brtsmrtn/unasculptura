@@ -1,0 +1,53 @@
+html,body,.container-fluid,.container,.row,.row div {height:100%;}
+body {background-color:#111111;}
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Optional, to align inner items 
+                              horizontally inside the column */
+}
+.vertical-align > [class^="col-"] > div
+.vertical-align > [class*=" col-"] > div {
+  /* flex: 1; */
+  flex-grow: 1;
+  /* eventually more @http://codepen.io/hashem/pen/zwJaE + two rows below */
+}
+.vertical-align > div:first-child {}
+.vertical-align > div:last-child {}
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+h2 {
+color: #FFFFDD;
+font-family: helvetica, arial, sans-serif; font-style: italic;
+font-size: 120px;
+}
+h3 {
+color: #FFFFDD;
+font-family: helvetica, arial, sans-serif; font-style: italic;
+font-size: 30px;
+}
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
+ .arrow {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family:'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    font-size: 30px;
+}
